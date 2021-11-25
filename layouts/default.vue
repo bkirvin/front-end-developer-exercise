@@ -3,8 +3,10 @@
     <b-row class="my-5">
       <b-col>
         <h1>Company Inc.</h1>
-        <NuxtLink to="/">Home</NuxtLink>
-        <NuxtLink to="pricing">Pricing</NuxtLink>
+        <NuxtLink
+          to="/">Home</NuxtLink>
+        <NuxtLink
+        to="pricing">Pricing</NuxtLink>
       </b-col>
     </b-row>
     <b-row>
@@ -17,8 +19,15 @@
 
 <script>
 export default {
-  name: 'Default',
+  name: 'Default'
 };
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+a:hover {
+  text-decoration: none;
+}
+.nuxt-link-exact-active {
+  font-weight: 800;
+}
+</style>

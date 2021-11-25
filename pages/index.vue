@@ -15,3 +15,11 @@ export default {
   layout: "default",
 };
 </script>
+
+<style lang="scss">
+@media only screen and (max-width: 768px) {
+  h1 {
+    font-size: 1.3rem !important;
+  }
+}
+</style>
