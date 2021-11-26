@@ -2,6 +2,7 @@
   <b-container>
     <b-row class="my-5">
       <b-col>
+        <Btn />
         <h1>Company Inc.</h1>
         <NuxtLink
           to="/">Home</NuxtLink>
@@ -18,8 +19,23 @@
 </template>
 
 <script>
+import { mapState, mapActions } from 'vuex'
+
 export default {
-  name: 'Default'
+  name: 'Default',
+  methods: {
+    ...mapActions('settings', [
+      'setDarkMode'
+    ])
+  },
+  computed: {
+    ...mapState('settings', [
+      'darkMode'
+    ])
+  },
+  components: {
+    Btn: require('@/components/Btn').default
+  }
 };
 </script>
 
@@ -29,5 +45,8 @@ a:hover {
 }
 .nuxt-link-exact-active {
   font-weight: 800;
+}
+.container {
+  margin-bottom: 5vh;
 }
 </style>

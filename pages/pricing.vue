@@ -31,9 +31,8 @@
                   class="cost">${{ plan.cost }}/mo</p>
               </b-card-text>
               <b-card-text>
-                <p
-                  v-for="(feature, index) in plan.features"
-                  :key="'feature' + index">{{ feature }}</p>
+                <Features
+                  :plan="plan" />
               </b-card-text>
               <template #footer>
                 <b-button
@@ -65,7 +64,6 @@ export default {
     },
     selectCard (name) {
       this.selectPlan(name)
-      console.log('plan', this.chosenPlan)
     },
     isSelected (name) {
       return name === this.chosenPlan
@@ -84,6 +82,7 @@ export default {
     },
     callToAction () {
       console.log('call to action', this.chosenPlan)
+      $nuxt.$router.push('plan')
     }
   },
   computed: {
@@ -91,6 +90,9 @@ export default {
       'pricingOptions',
       'chosenPlan'
     ])
+  },
+  components: {
+    Features: require('@/components/Features').default
   }
 }
 </script>
@@ -101,20 +103,23 @@ p {
   font-size: 1.25rem;
 }
 .card {
-  color: black;
+  color: var(--color) !important;
+  background-color: rgba(255, 255, 255, 0.1);
 }
 .card-header {
   font-size: 1.5rem;
   font-weight: 600;
+  background-color: var(--bg-secondary);
 }
 .card-text {
   p {
     font-size: 1rem;
-    color: black;
+    color: var(-color) !important;
   }
   .cost {
     font-size: 1.5rem;
     font-weight: 600;
+    color: var(--color);
   }
 }
 .card-footer {

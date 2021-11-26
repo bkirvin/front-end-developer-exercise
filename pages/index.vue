@@ -12,8 +12,8 @@
 <script>
 export default {
   name: "Homepage",
-  layout: "default",
-};
+  layout: "default"
+}
 </script>
 
 <style lang="scss">
