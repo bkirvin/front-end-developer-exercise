@@ -17,9 +17,14 @@ export default {
 </script>
 
 <style lang="scss">
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 991px) {
   h1 {
     font-size: 1.3rem !important;
+  }
+  .text-center {
+    h1 {
+      font-size: 2rem !important;
+    }
   }
 }
 </style>

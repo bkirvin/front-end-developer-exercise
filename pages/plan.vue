@@ -23,6 +23,7 @@
 
 <script>
 import { mapState } from 'vuex'
+import { BIcon, BIconChevronLeft } from 'bootstrap-vue'
 
 export default {
   name: "Plan",
@@ -42,7 +43,9 @@ export default {
     }
   },
   components: {
-    Features: require('@/components/Features').default
+    Features: require('@/components/Features').default,
+    BIcon,
+    BIconChevronLeft
   }
 }
 </script>

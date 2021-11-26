@@ -35,6 +35,13 @@ export default {
   },
   components: {
     Btn: require('@/components/Btn').default
+  },
+  mounted () {
+    const mode = localStorage.getItem('darkMode')
+    if (mode) {
+      this.setDarkMode(mode === 'true')
+    }
+    console.log('mode', mode === 'true')
   }
 };
 </script>

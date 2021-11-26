@@ -1,8 +1,8 @@
 <template>
   <div>
-    Dark Mode :
     <b-button
-      @click="toggle">{{ label }}</b-button>
+      size="sm"
+      @click="toggle">Dark Mode: {{ modeLabel }}</b-button>
   </div>
 </template>
 
@@ -17,6 +17,7 @@ export default {
     ]),
     toggle () {
       this.setDarkMode(!this.darkMode)
+      localStorage.setItem('darkMode', this.darkMode)
       this.$colorMode.preference = this.displayMode
     }
   },
@@ -24,7 +25,8 @@ export default {
     ...mapState('settings', [
       'darkMode'
     ]),
-    label () {
+    modeLabel () {
+      console.log('btn dark mode', this.darkMode)
       return this.darkMode ? 'ON' : 'OFF'
     },
     displayMode () {
@@ -33,3 +35,13 @@ export default {
   }
 }
 </script>
+
+<style lang="scss" scoped>
+button {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  z-index: 200;
+}
+</style>

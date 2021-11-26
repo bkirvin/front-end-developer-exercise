@@ -1,12 +1,13 @@
 <template>
   <b-container class="text-center">
+    <Modal />
     <b-row>
       <b-col class="mt-5">
         <h1>Pricing</h1>
       </b-col>
     </b-row>
     <b-row class="justify-content-center">
-      <b-col md="8">
+      <b-col md="12" lg="8">
         <p>
           Lorem ipsum dolor sit amet consectetur, adipisicing elit. Explicabo,
           tenetur. Eius, fugit quidem tempore, quia officia impedit possimus
@@ -19,7 +20,7 @@
         <b-card-group
           v-for="(plan, index) in pricingOptions"
           :key="'plan' + index"
-          class="col-md-4">
+          class="col-lg-4">
           <b-card
             :header="plan.name"
             :border-variant="isSelectedColor(plan.name)"
@@ -36,12 +37,12 @@
               </b-card-text>
               <template #footer>
                 <b-button
+                  class="card-btn"
                   :variant="buttonType(plan.paid)"
                   @click="callToAction">{{ plan.cta }}</b-button>
               </template>
           </b-card>
         </b-card-group>
-      
     </b-row>
   </b-container>
 </template>
@@ -63,7 +64,12 @@ export default {
       return 'outline-primary'
     },
     selectCard (name) {
+      console.log('path', $nuxt.$route.path)
       this.selectPlan(name)
+      setTimeout(() => {
+        if ($nuxt.$route.path === '/plan') return
+        this.$bvModal.show('modal-1')
+      }, 50)
     },
     isSelected (name) {
       return name === this.chosenPlan
@@ -81,7 +87,7 @@ export default {
       return ''
     },
     callToAction () {
-      console.log('call to action', this.chosenPlan)
+      console.log('callToAction')
       $nuxt.$router.push('plan')
     }
   },
@@ -92,7 +98,8 @@ export default {
     ])
   },
   components: {
-    Features: require('@/components/Features').default
+    Features: require('@/components/Features').default,
+    Modal: require('@/components/Modal').default
   }
 }
 </script>
@@ -106,24 +113,34 @@ p {
   color: var(--color) !important;
   background-color: rgba(255, 255, 255, 0.1);
 }
+.modal-header,
 .card-header {
   font-size: 1.5rem;
   font-weight: 600;
   background-color: var(--bg-secondary);
 }
 .card-text {
+  color: var(--color);
+  margin-bottom: 4vh !important;
+
   p {
+    color: var(--color);
     font-size: 1rem;
-    color: var(-color) !important;
   }
   .cost {
     font-size: 1.5rem;
-    font-weight: 600;
-    color: var(--color);
+    font-weight: 600; 
   }
 }
 .card-footer {
+  position: relative;
   background-color: unset;
   border: unset;
+}
+.card-btn {
+  position: absolute;
+  z-index: 100;
+  left: 50%;
+  transform: translate(-50%, -100%);
 }
 </style>
