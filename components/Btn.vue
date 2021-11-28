@@ -26,7 +26,6 @@ export default {
       'darkMode'
     ]),
     modeLabel () {
-      console.log('btn dark mode', this.darkMode)
       return this.darkMode ? 'ON' : 'OFF'
     },
     displayMode () {

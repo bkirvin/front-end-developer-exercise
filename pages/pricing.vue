@@ -64,7 +64,6 @@ export default {
       return 'outline-primary'
     },
     selectCard (name) {
-      console.log('path', $nuxt.$route.path)
       this.selectPlan(name)
       setTimeout(() => {
         if ($nuxt.$route.path === '/plan') return
@@ -87,7 +86,6 @@ export default {
       return ''
     },
     callToAction () {
-      console.log('callToAction')
       $nuxt.$router.push('plan')
     }
   },

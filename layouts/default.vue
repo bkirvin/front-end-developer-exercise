@@ -41,7 +41,6 @@ export default {
     if (mode) {
       this.setDarkMode(mode === 'true')
     }
-    console.log('mode', mode === 'true')
   }
 };
 </script>
